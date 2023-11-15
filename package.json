@@ -1,0 +1,84 @@
+{
+  "name": "ts-pdf-annot",
+  "version": "0.17.3",
+  "description": "PDF.js-based PDF viewer",
+  "module": "dist/ts-pdf.esm.js",
+  "types": "dist/ts-pdf.d.ts",
+  "scripts": {
+    "test": "karma start",
+    "copycsstotsc": "copyfiles -f ./src/*.css ./tsc/src",
+    "copypngtotsc": "copyfiles -f ./src/assets/icons/*.png ./tsc/src/assets/icons && copyfiles -f ./src/assets/assets.d.ts ./tsc/src",
+    "buildts": "tsc && npm run copypngtotsc",
+    "buildru": "rollup -c",
+    "copypdfjsworker": "copyfiles -f ./node_modules/pdfjs-dist/build/pdf.worker.min.js ./demo/assets/",
+    "copypdfjsviewerstyles": "copyfiles -f ./node_modules/pdfjs-dist/web/pdf_viewer.css ./demo/",
+    "build": "npm run buildts && npm run buildru && npm run copypdfjsworker",
+    "start": "npm run build && lite-server -c ls-config.json",
+    "mpublish": "npm version minor && npm publish",
+    "ppublish": "npm version patch && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iruthaya/ts-pdf-annot.git"
+  },
+  "keywords": [
+    "web",
+    "typescript",
+    "pdf",
+    "pdf-viewer",
+    "pdfjs"
+  ],
+  "author": "Volodymyr Yermolenko <yermolim@gmail.com> (https://github.com/yermolim)",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/yermolim/ts-pdf/issues"
+  },
+  "homepage": "https://github.com/yermolim/ts-pdf#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-image": "^2.1.1",
+    "@rollup/plugin-multi-entry": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-strip": "^2.1.0",
+    "@rollup/plugin-typescript": "^8.3.4",
+    "@types/jasmine": "^4.0.3",
+    "@types/resize-observer-browser": "^0.1.7",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.21.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jasmine-core": "^4.3.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "karma": "^6.4.0",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-cli": "^2.0.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-typescript": "^5.5.3",
+    "lite-server": "^2.6.1",
+    "puppeteer": "^16.1.0",
+    "rollup": "^2.77.3",
+    "rollup-plugin-css-porter": "^1.0.2",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-license": "^2.8.1",
+    "rollup-plugin-node-externals": "^4.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "crypto-es": "^1.2.7",
+    "mathador": "^0.2.2",
+    "pako": "^2.0.4",
+    "pdfjs-dist": "^2.15.349",
+    "ts-viewers-core": "^0.0.27"
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  }
+}
